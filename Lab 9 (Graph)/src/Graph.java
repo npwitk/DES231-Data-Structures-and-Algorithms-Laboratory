@@ -220,51 +220,31 @@ public class Graph<T> {
 		// The previous adjacency list before the current one.
 		AdjList<T> prevAdjList = firstList;
 
-		// NOT A GOOD STRUCTURE!
-		while (currentAdjList != null) {
-			if (!currentAdjList.data.equals(vertex)) {
+	
+			while (currentAdjList != null) {
+			if (!currentAdjList.data.equals(vertex)) { //firstlist not equal to vertex ~ check for the edge we want to delete
 				deleteEdge(currentAdjList.data, vertex);
-				prevAdjList = currentAdjList;
-				currentAdjList = currentAdjList.nextList;
-			} else {
-				if (currentAdjList == firstList) {
+			} else { //if currentAdjList is the vertex we want to delete
+				if (currentAdjList == firstList) { //delete first vertex
 					firstList = currentAdjList.nextList;
-				} else if (currentAdjList == lastList) {
+					edgeCount -= currentAdjList.outdegree; //delete edge
+					vertexCount--;
+				} else if (currentAdjList == lastList) { //delete last vertex
 					lastList = prevAdjList;
 					lastList.nextList = null;
-				} else {
-					edgeCount = edgeCount - currentAdjList.outdegree;
+					edgeCount -= currentAdjList.outdegree; //delete edge
 					vertexCount--;
-					prevAdjList.nextList = currentAdjList.nextList;
+				} else { //delete any vertex
+					edgeCount -= currentAdjList.outdegree; //delete edge
+					vertexCount--;
+					prevAdjList.nextList = currentAdjList.nextList; //overpass
 					currentAdjList = currentAdjList.nextList;
 				}
-			}
-		}
 
-		//		while (currentAdjList != null) {
-//			if (!currentAdjList.data.equals(vertex)) { //firstlist not equal to vertex ~ check for the edge we want to delete
-//				deleteEdge(currentAdjList.data, vertex);
-//			} else { //if currentAdjList is the vertex we want to delete
-//				if (currentAdjList == firstList) { //delete first vertex
-//					firstList = currentAdjList.nextList;
-//					edgeCount -= currentAdjList.outdegree; //delete edge
-//					vertexCount--;
-//				} else if (currentAdjList == lastList) { //delete last vertex
-//					lastList = prevAdjList;
-//					lastList.nextList = null;
-//					edgeCount -= currentAdjList.outdegree; //delete edge
-//					vertexCount--;
-//				} else { //delete any vertex
-//					edgeCount -= currentAdjList.outdegree; //delete edge
-//					vertexCount--;
-//					prevAdjList.nextList = currentAdjList.nextList; //overpass
-//					currentAdjList = currentAdjList.nextList;
-//				}
-//
-//			}
-//			prevAdjList = currentAdjList; //overpass graph
-//			currentAdjList = currentAdjList.nextList;
-//		} — BETTER STRUCTURE
+			}
+			prevAdjList = currentAdjList; //overpass graph
+			currentAdjList = currentAdjList.nextList;
+		} 
 	}
 
 	/**
