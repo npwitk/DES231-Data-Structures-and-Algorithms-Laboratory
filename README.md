@@ -1,6 +1,6 @@
 # DES231: Data Structures and Algorithms Laboratory
 
-This repository contains Java files for **DES231: Data Structures and Algorithms Laboratory**, a course at SIIT, Thammasat University. The course provides a comprehensive introduction to data structures and algorithms, focusing on both theoretical understanding and practical implementation. Students learn to solve computational problems efficiently using appropriate data structures and algorithms.
+This repository contains Java files for **DES231: Data Structures and Algorithms Laboratory**, a course at SIIT, Thammasat University. The course provides a comprehensive introduction to data structures and algorithms, focusing on both theoretical understanding and practical implementation.
 
 The repository is organized by lab sessions, progressing from foundational programming concepts to more advanced data structures. Each folder corresponds to a specific topic and contains code exercises based on the instructions given during the course. The files include detailed comments to explain the implementation and logic.
 
